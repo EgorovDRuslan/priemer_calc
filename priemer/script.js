@@ -143,5 +143,5 @@ addBtn.addEventListener('click', () => {
 });
 calcBtn.addEventListener('click', calculateResult);
 
-// Generate 3 initial rows on load
+// Generate 3 initial rows on load or load existed data
 loadFromStorage();
