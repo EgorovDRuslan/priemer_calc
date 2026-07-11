@@ -194,3 +194,49 @@ input:focus, select:focus {
 .ais-file-input::-webkit-file-upload-button:hover {
     background: #800406;
 }
+
+.copy-import-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px dashed var(--primary);
+    border-radius: 8px;
+    background-color: #f7fbfe;
+    text-align: left;
+}
+
+.copy-import-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.copy-import-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.copy-import-section textarea:focus {
+    border-color: var(--primary);
+}
+
+.error-box {
+    background-color: #fdedec;
+    border-left: 5px solid var(--danger);
+    color: var(--danger-hover);
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    animation: fadeIn 0.3s ease-in-out;
+} 

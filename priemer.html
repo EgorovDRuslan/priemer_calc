@@ -16,6 +16,16 @@
             <input type="file" id="aisFileInput" class="ais-file-input" accept=".html,.htm">
         </div>
 
+        <!-- New section for inputing copied text -->
+        <div class="copy-import-section">
+            <label class="copy-import-label">Or paste copied text here starting with "Povinne predmety":</label>
+            <textarea id="copyPasteInput" rows="6" placeholder="Paste your subjects and grades here..."></textarea>
+            <button id="importTextBtn" class="btn btn-primary" style="margin-top: 10px;">Import from Text</button>
+            
+            <!-- Box for showing input errors -->
+            <div id="errorBox" class="error-box hidden"></div>
+        </div>
+
         <div class="table-container">
             <table id="subjectsTable">
                 <thead>

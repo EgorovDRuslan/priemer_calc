@@ -1,4 +1,4 @@
-import { parseAisHtml } from './parser.js';
+import { parseAisHtml , parseCopyPaste } from './parser.js';
 
 // Multipliers for grades
 const multipliers = {
@@ -17,6 +17,9 @@ const resultBox = document.getElementById('resultBox');
 const resultValue = document.getElementById('resultValue');
 const intrakValue = document.getElementById('intrakValue');
 const aisFileInput = document.getElementById('aisFileInput');
+const copyPasteInput = document.getElementById('copyPasteInput');
+const importTextBtn = document.getElementById('importTextBtn');
+const errorBox = document.getElementById('errorBox');
 
 // Creates a new dynamic row in the table
 function createRow(name = '', value = '', grade = 'FX') {
@@ -174,6 +177,37 @@ if (aisFileInput) {
             }
         };
         reader.readAsText(file);
+    });
+}
+
+if (importTextBtn) {
+    importTextBtn.addEventListener('click', () => {
+        const text = copyPasteInput.value;
+        
+        errorBox.classList.add('hidden');
+        errorBox.textContent = '';
+
+        try {
+            const subjects = parseCopyPaste(text);
+            
+            if (subjects.length > 0) {
+                tableBody.innerHTML = ''; 
+                
+                subjects.forEach(sub => createRow(sub.name, sub.credits, sub.grade));
+                
+                saveToStorage();
+                calculateResult();
+                
+                copyPasteInput.value = '';
+                alert("Successfully imported from text!");
+            } else {
+                alert("No subjects found. Check your text format.");
+            }
+
+        } catch (error) {
+            errorBox.textContent = `❌ ${error.message}`;
+            errorBox.classList.remove('hidden');
+        }
     });
 }
 
